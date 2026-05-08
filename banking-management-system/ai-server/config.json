@@ -1,0 +1,9 @@
+{
+  "host": "127.0.0.1",
+  "port": 8080,
+  "n_gpu_layers": 35,
+  "n_ctx": 2048,
+  "n_threads": 8,
+  "chat_template": "chatml",
+  "model": "./models/qwen-banking-q4_k_m.gguf"
+}

@@ -1,0 +1,41 @@
+model:
+  name: "Qwen/Qwen2.5-1.5B-Instruct"
+  max_seq_length: 2048
+  load_in_4bit: true
+  dtype: null  # auto-detect
+
+lora:
+  r: 16
+  alpha: 16
+  dropout: 0.0
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+training:
+  output_dir: "../output/qwen-banking-lora"
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 4
+  learning_rate: 2.0e-4
+  num_train_epochs: 3
+  warmup_ratio: 0.1
+  lr_scheduler_type: "cosine"
+  fp16: true
+  bf16: false
+  logging_steps: 10
+  save_steps: 100
+  eval_steps: 100
+  evaluation_strategy: "steps"
+  save_total_limit: 2
+  load_best_model_at_end: true
+  report_to: "none"
+
+data:
+  train_file: "../data/processed/train.jsonl"
+  eval_file: "../data/processed/eval.jsonl"
+  dataset_text_field: "text"

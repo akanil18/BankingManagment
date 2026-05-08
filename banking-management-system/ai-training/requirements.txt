@@ -1,0 +1,11 @@
+unsloth
+torch
+transformers
+trl
+peft
+accelerate
+bitsandbytes
+datasets
+huggingface_hub
+psycopg2-binary
+python-dotenv
